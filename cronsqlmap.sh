@@ -6,5 +6,6 @@ source ~/.bash_aliases
 # luego quita la primer linea de urls.txt y la agrega al final del archivo, para realizar un ciclo infinito sobre esos dominios
 primera=$(popandpull urls.txt)
 echo "$primera" | waybackurls | grep "\?" > tmp.txt
-uniqueurls tmp.txt batch.txt && rm tmp.txt
-batchsqlmap batch.txt &
+uniqueurls tmp.txt batch$primera.txt && rm tmp.txt
+batchsqlmap batch$primera.txt &
+wait
