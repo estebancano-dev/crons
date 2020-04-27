@@ -4,7 +4,11 @@ source ~/.bash_aliases
 
 # a partir de un dominio (primera linea de urls.txt), obtiene waybackurls, ejecuta sqlmap para cada una
 # luego quita la primer linea de urls.txt y la agrega al final del archivo, para realizar un ciclo infinito sobre esos dominios
-primera=$(popandpull urls.txt)
+lista=$1
+if [ -z "$var" ]; then
+	lista="urls.txt"
+fi
+primera=$(popandpull "$lista")
 echo "$primera" | waybackurls | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
 batchsqlmap batch$primera.txt &
 wait
