@@ -3,7 +3,7 @@ shopt -s expand_aliases
 source ~/.bash_aliases
 
 lista=$1
-if [ -z "$var" ]; then
+if [ -z "$lista" ]; then
 	lista="urls2.txt"
 fi
 i=0
