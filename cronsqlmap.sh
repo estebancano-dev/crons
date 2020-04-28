@@ -7,9 +7,11 @@ source ~/.bash_aliases
 lista=$1
 if [ -z "$lista" ]; then
 	lista="urls.txt"
+	primera=$(popandpull "$lista")
+	#echo "$primera" | waybackurls | grep "\.$primera" | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
+	echo "$primera" > batch$primera.txt
+	batchsqlmap batch$primera.txt &
+elif
+	batchsqlmap $lista &
 fi
-primera=$(popandpull "$lista")
-#echo "$primera" | waybackurls | grep "\.$primera" | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
-echo "$primera" > batch$primera.txt
-batchsqlmap batch$primera.txt &
 wait
