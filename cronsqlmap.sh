@@ -11,7 +11,7 @@ if [ -z "$lista" ]; then
 	#echo "$primera" | waybackurls | grep "\.$primera" | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
 	echo "$primera" > batch$primera.txt
 	batchsqlmap batch$primera.txt &
-elif
+else
 	batchsqlmap $lista &
 fi
 wait
