@@ -1,8 +1,13 @@
 #!/bin/bash
 shopt -s expand_aliases
 source ~/.bash_aliases
+
+lista=$1
+if [ -z "$var" ]; then
+	lista="urls2.txt"
+fi
 i=0
-cat urls2.txt | while read line; do
+cat "$lista" | while read line; do
 	((i++))
 	echo "$line" > aaa$i.txt && checkheaders aaa$i.txt &
 done

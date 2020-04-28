@@ -9,6 +9,7 @@ if [ -z "$var" ]; then
 	lista="urls.txt"
 fi
 primera=$(popandpull "$lista")
-echo "$primera" | waybackurls | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
+#echo "$primera" | waybackurls | grep "\.$primera" | grep "\?" | grep -oE '(https?)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]' > batch$primera.txt
+echo "$primera" > batch$primera.txt
 batchsqlmap batch$primera.txt &
 wait
