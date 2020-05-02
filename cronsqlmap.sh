@@ -7,6 +7,9 @@ source ~/.bash_aliases
 lista=$1
 if [ -z "$lista" ]; then
 	lista="urls.txt"
+else
+	echo "$1" > lista$1.txt
+	lista="lista$1.txt"
 fi
 
 if [[ -f $lista && ! -s $lista ]]; then
